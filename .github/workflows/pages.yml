@@ -20,16 +20,22 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Build static site (no-op)
+      - name: Prepare public directory
         run: |
-          echo "Nothing to build; static files only."
+          mkdir -p public
+          cp -v index.html public/
+          cp -v script.js public/
+          cp -v styles.css public/
+          if [ -f example_json.json ]; then cp -v example_json.json public/; fi
+          if [ -f .nojekyll ]; then cp -v .nojekyll public/; fi
+          echo "Prepared files:" && ls -la public
 
       - name: Publish to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: .
+          publish_dir: ./public
           force_orphan: true
 
 
