@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Optimizer Run Parser</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JSON Optimizer Run Parser</h1>
+            <p>Parse and display JSON data with custom formatting rules</p>
+        </header>
+
+        <div class="input-section">
+            <div class="form-group">
+                <label for="jsonInput">JSON Data:</label>
+                <textarea id="jsonInput" placeholder="Paste your JSON data here... (any text before the first { will be automatically removed)
+
+Example format:
+{
+  &quot;operationData&quot;: {
+    &quot;metadata&quot;: {
+      &quot;ctx&quot;: { /* context variables */ }
+    },
+    &quot;data&quot;: {
+      &quot;matchedRules&quot;: [ /* optimizer rules */ ]
+    }
+  },
+  &quot;diff&quot;: {
+    &quot;dataHR&quot;: {
+      &quot;DailyBudget&quot;: 33,
+      &quot;CPC&quot;: 0.01,
+      &quot;Status&quot;: &quot;RUNNING&quot;
+    }
+  }
+}" rows="10"></textarea>
+            </div>
+
+
+            <div class="button-group">
+                <button id="parseBtn" class="btn btn-primary">Parse JSON</button>
+                <button id="parseOptimizerBtn" class="btn btn-success">Parse Optimizer Rules</button>
+                <button id="clearDataBtn" class="btn btn-warning">Clear Saved Data</button>
+            </div>
+        </div>
+
+        <div class="output-section">
+            <div class="output-header">
+                <h3>Parsed Output</h3>
+                <div class="output-controls">
+                    <button id="copyBtn" class="btn btn-secondary">Copy to Clipboard</button>
+                    <button id="downloadBtn" class="btn btn-secondary">Download</button>
+                    <button id="toggleRawBtn" class="btn btn-secondary">Toggle Raw JSON</button>
+                </div>
+            </div>
+            <div id="output" class="output-content">
+                <p class="placeholder">Paste JSON data above and click "Parse JSON" to format it...</p>
+            </div>
+        </div>
+
+        <div class="error-section" id="errorSection" style="display: none;">
+            <h3>Error</h3>
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+    </div>
+
+    <!-- Sticky Theme Toggle -->
+    <button id="themeToggle" class="sticky-theme-toggle" title="Toggle Theme">
+        <span class="theme-icon">🌙</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
