@@ -1,0 +1,23 @@
+# Python virtualenv
+venv/
+
+# Node/npm
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Editor/IDE
+.idea/
+.vscode/
+
+# Build artifacts (if ever added)
+dist/
+build/
+out/
+
+
